@@ -1,0 +1,16 @@
+{
+  "name": "rfc-reader",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neluzhin/rfc-reader.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neluzhin/rfc-reader/issues"
+  },
+  "homepage": "https://github.com/neluzhin/rfc-reader",
+  "dependencies": {}
+}
