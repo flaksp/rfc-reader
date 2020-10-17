@@ -1,16 +1,34 @@
 {
   "name": "rfc-reader",
-  "version": "1.0.0",
-  "description": "",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/neluzhin/rfc-reader.git"
+  "description": "Simple extension that makes IEFT's RFCs more eye friendly.",
+  "repository": "github:flaksp/rfc-reader",
+  "private": true,
+  "author": {
+    "name": "Petr Flaks",
+    "email": "petr@flaks.dev",
+    "url": "https://flaks.dev"
   },
-  "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/neluzhin/rfc-reader/issues"
+    "url": "https://github.com/flaksp/rfc-reader/issues"
   },
-  "homepage": "https://github.com/neluzhin/rfc-reader",
-  "dependencies": {}
+  "homepage": "https://github.com/flaksp/rfc-reader",
+  "dependencies": {
+    "chrome-webstore-upload-cli": "^1.2.0",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-copy": "^4.0.1",
+    "gulp-json-editor": "^2.5.4",
+    "gulp-jsonminify": "1.1.0",
+    "gulp-terser": "1.4.0",
+    "material-design-icons": "^3.0.1"
+  },
+  "devDependencies": {
+    "eslint": "7.11.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-sort-keys-fix": "1.1.1",
+    "eslint-plugin-unused-imports": "0.1.3"
+  }
 }

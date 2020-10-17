@@ -1,10 +1,6 @@
 {
     "manifest_version": 2,
-    "version": "1.0.0",
     "name": "RFC Reader",
-    "author": "Petr Flaks",
-    "homepage_url": "https://github.com/neluzhin/rfc-reader",
-    "description": "Simple extension that makes IEFT's RFCs more eye friendly.",
     "short_name": "RFC Reader",
     "offline_enabled": true,
 
@@ -13,17 +9,13 @@
         "https://tools.ietf.org/*"
     ],
 
-    "icons": {
-        "96":  "/node_modules/material-design-icons/device/2x_web/ic_dvr_black_48dp.png"
-    },
-
     "content_scripts": [{
         "matches": [
             "http://tools.ietf.org/html/*",
             "https://tools.ietf.org/html/*"
         ],
         "js": [
-            "/src/content-script.js"
+            "content-script.js"
         ]
     }]
 }

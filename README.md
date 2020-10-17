@@ -1,15 +1,15 @@
-# RFC reader
-[![Build status](https://api.travis-ci.org/neluzhin/rfc-reader.svg)](https://travis-ci.org/neluzhin/rfc-reader)
-[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg?maxAge=604800)](https://renovatebot.com/)
+# RFC Reader
 
 This simple extension improves your eye experience while you are reading IETF's RFCs. It does few things:
 
 * Enlarges font size from 13px to 20px.
 * Centers content.
 
-## Download
+## Install
 
 * [Chrome Web Store](https://chrome.google.com/webstore/detail/jhmoebgbkkbpdmmigmdmbbdbpolnddod)
+* [Firefox store](https://addons.mozilla.org/en-US/firefox/addon/rfc-reader/)
+* [Opera store](https://addons.opera.com/en/extensions/details/rfc-reader/)
 
 ## FAQ
 
@@ -22,7 +22,3 @@ Currently no, but it's planned for the future. See [#1](https://github.com/neluz
 ### Does it support settings?
 
 Currently no, but it's planned for the future. See [#2](https://github.com/neluzhin/rfc-reader/issues/2).
-
-## License
-
-This extension is licensed under MIT license. For further details see [LICENSE](LICENSE) file.
