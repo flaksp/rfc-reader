@@ -1,6 +1,6 @@
 # RFC Reader
 
-This simple extension improves your eye experience while you are reading IETF's RFCs. It does few things:
+This simple extension improves your eye experience while you are reading [IETF's RFCs](https://tools.ietf.org/html/). It does few things:
 
 * Enlarges font size from 13px to 20px.
 * Centers content.
