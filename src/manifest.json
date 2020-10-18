@@ -17,5 +17,16 @@
     "js": [
       "content-script.js"
     ]
-  }]
+  }],
+
+  "omnibox": {
+    "keyword" : "gorfc"
+  },
+
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "background-script.js"
+    ]
+  }
 }
