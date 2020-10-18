@@ -1,21 +1,21 @@
 {
-    "manifest_version": 2,
-    "name": "RFC Reader",
-    "short_name": "RFC Reader",
-    "offline_enabled": true,
+  "manifest_version": 2,
+  "name": "RFC Reader",
+  "short_name": "RFC Reader",
+  "offline_enabled": true,
 
-    "permissions": [
-        "http://tools.ietf.org/*",
-        "https://tools.ietf.org/*"
+  "permissions": [
+    "http://tools.ietf.org/*",
+    "https://tools.ietf.org/*"
+  ],
+
+  "content_scripts": [{
+    "matches": [
+      "http://tools.ietf.org/html/*",
+      "https://tools.ietf.org/html/*"
     ],
-
-    "content_scripts": [{
-        "matches": [
-            "http://tools.ietf.org/html/*",
-            "https://tools.ietf.org/html/*"
-        ],
-        "js": [
-            "content-script.js"
-        ]
-    }]
+    "js": [
+      "content-script.js"
+    ]
+  }]
 }
