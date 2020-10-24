@@ -8,7 +8,7 @@ This simple extension improves your eye experience while you are reading [IETF's
 * [Firefox store](https://addons.mozilla.org/en-US/firefox/addon/rfc-reader/)
 * [Opera store](https://addons.opera.com/en/extensions/details/rfc-reader/)
 
-Please rate extension in these stores if you like it ❤️
+Please rate the extension in these stores if you like it ❤️
 
 ## Features
 
@@ -35,8 +35,6 @@ The extension also allows you to use omnibox shortcut to easily jump to RFC by i
 ![Demonstrating how search through omnibox works](https://user-images.githubusercontent.com/12474739/96368122-bbc65c00-115a-11eb-8086-f92e966dc483.gif)
 
 ## FAQ
-
-TL;DR: All implemented features are listed below.
 
 ### Does RFC Reader supports dark mode?
 
