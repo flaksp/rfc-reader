@@ -36,7 +36,7 @@ The extension also allows you to use omnibox shortcut to easily jump to RFC by i
 
 ## FAQ
 
-### Does RFC Reader supports dark mode?
+### Does RFC Reader support dark mode?
 
 Currently no, but it's planned for the future. See [#1](https://github.com/neluzhin/rfc-reader/issues/1).
 
