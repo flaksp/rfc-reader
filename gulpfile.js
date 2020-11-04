@@ -11,6 +11,12 @@ const ICON_NAME = 'ic_find_in_page_black_48dp.png';
 gulp.task('process-manifest', () => gulp.src('./src/manifest.json')
   .pipe(gulpJsonEditor({
     author: npmPackage.author.name,
+    browser_specific_settings: process.env.FIREFOX_EXTENSION_ID === undefined ? undefined : {
+      gecko: {
+        id: process.env.FIREFOX_EXTENSION_ID,
+        strict_min_version: '48.0',
+      },
+    },
     description: npmPackage.description,
     homepage: npmPackage.homepage,
     icons: {

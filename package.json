@@ -22,7 +22,9 @@
     "gulp-json-editor": "2.5.4",
     "gulp-jsonminify": "1.1.0",
     "gulp-terser": "1.4.1",
-    "material-design-icons": "3.0.1"
+    "material-design-icons": "3.0.1",
+    "web-ext": "5.3.0",
+    "web-ext-submit": "5.3.0"
   },
   "devDependencies": {
     "eslint": "7.12.1",
