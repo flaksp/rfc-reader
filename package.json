@@ -19,7 +19,7 @@
     "gulp": "4.0.2",
     "gulp-cli": "2.3.0",
     "gulp-copy": "4.0.1",
-    "gulp-json-editor": "2.5.4",
+    "gulp-json-editor": "2.5.5",
     "gulp-jsonminify": "1.1.0",
     "gulp-terser": "2.0.1",
     "material-design-icons": "3.0.1",
