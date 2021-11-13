@@ -134,7 +134,7 @@ jobs:
           REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
       - name: Publish at Chrome Web Store
-        run: npx webstore publish --extension-id $APP_ID
+        run: npx chrome-webstore-upload publish --extension-id $APP_ID
         env:
           APP_ID: jhmoebgbkkbpdmmigmdmbbdbpolnddod
           CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
