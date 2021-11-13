@@ -1,0 +1,14 @@
+name: GitHub
+
+on: pull_request_target
+
+jobs:
+  auto_approve_pr_by_dependabot:
+    name: Auto approve PR by Dependabot
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: hmarr/auto-approve-action@v2.1.0
+        with:
+          github-token: ${{ github.token }}
