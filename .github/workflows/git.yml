@@ -8,12 +8,12 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2.4.0
-      with:
-        fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
 
-    - name: Run commitlint
-      uses: wagoid/commitlint-github-action@v4.1.9
-      with:
-        configFile: .commitlintrc.json
+      - name: Run commitlint
+        uses: wagoid/commitlint-github-action@v4.1.9
+        with:
+          configFile: .commitlintrc.json
