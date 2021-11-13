@@ -131,7 +131,6 @@ jobs:
         env:
           APP_ID: jhmoebgbkkbpdmmigmdmbbdbpolnddod
           CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
       - name: Publish at Chrome Web Store
@@ -139,7 +138,6 @@ jobs:
         env:
           APP_ID: jhmoebgbkkbpdmmigmdmbbdbpolnddod
           CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
   upload_to_firefox_addons:
