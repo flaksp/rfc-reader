@@ -9,24 +9,22 @@
     "https://tools.ietf.org/*"
   ],
 
-  "content_scripts": [{
-    "matches": [
-      "http://tools.ietf.org/html/*",
-      "https://tools.ietf.org/html/*"
-    ],
-    "js": [
-      "content-script.js"
-    ]
-  }],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://tools.ietf.org/html/*",
+        "https://tools.ietf.org/html/*"
+      ],
+      "js": ["content-script.js"]
+    }
+  ],
 
   "omnibox": {
-    "keyword" : "gorfc"
+    "keyword": "gorfc"
   },
 
   "background": {
     "persistent": false,
-    "scripts": [
-      "background-script.js"
-    ]
+    "scripts": ["background-script.js"]
   }
 }

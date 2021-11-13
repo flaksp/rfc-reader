@@ -3,7 +3,7 @@ name: Publish
 on:
   release:
     types:
-    - published
+      - published
 
 jobs:
   build_chromium:
@@ -11,61 +11,85 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
 
-    - name: Setup Node.js
-      uses: actions/setup-node@master
-      with:
-        node-version: '14.x'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '16.x'
 
-    - name: Install npm dependencies
-      run: npm ci
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
 
-    - name: Build extension
-      run: npx gulp
-      env:
-        TARGET_PLATFORM: chromium
-        GIT_VERSION: ${{ github.sha }}
-        BUILD_NUMBER: ${{ github.run_number }}
-        APP_VERSION: ${{ github.event.release.tag_name }}
+      - name: Cache dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-npm-production-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-production-
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v1
-      with:
-        name: chromium
-        path: dist
+      - name: Install npm dependencies
+        run: npm ci --production --prefer-offline
+
+      - name: Build extension
+        run: npx gulp
+        env:
+          TARGET_PLATFORM: chromium
+          GIT_VERSION: ${{ github.sha }}
+          BUILD_NUMBER: ${{ github.run_number }}
+          APP_VERSION: ${{ github.event.release.tag_name }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: chromium
+          path: dist
 
   build_webext:
     name: Build (WebExtensions)
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
 
-    - name: Setup Node.js
-      uses: actions/setup-node@master
-      with:
-        node-version: '14.x'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '16.x'
 
-    - name: Install npm dependencies
-      run: npm ci
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
 
-    - name: Build extension
-      run: npx gulp
-      env:
-        TARGET_PLATFORM: webext
-        FIREFOX_EXTENSION_ID: '{755d8e2c-7b6b-4c41-84c1-a4a5b1a09c0d}'
-        GIT_VERSION: ${{ github.sha }}
-        BUILD_NUMBER: ${{ github.run_number }}
-        APP_VERSION: ${{ github.event.release.tag_name }}
+      - name: Cache dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-npm-production-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-production-
 
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: webext
-        path: dist
+      - name: Install npm dependencies
+        run: npm ci --production --prefer-offline
+
+      - name: Build extension
+        run: npx gulp
+        env:
+          TARGET_PLATFORM: webext
+          FIREFOX_EXTENSION_ID: '{755d8e2c-7b6b-4c41-84c1-a4a5b1a09c0d}'
+          GIT_VERSION: ${{ github.sha }}
+          BUILD_NUMBER: ${{ github.run_number }}
+          APP_VERSION: ${{ github.event.release.tag_name }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          name: webext
+          path: dist
 
   upload_to_chrome_web_store:
     name: Upload (Chrome Web Store)
@@ -73,38 +97,44 @@ jobs:
     needs: [build_chromium]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
 
-    - name: Download build artifacts
-      uses: actions/download-artifact@v2
-      with:
-        name: chromium
-        path: dist
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '16.x'
 
-    - name: Setup Node.js
-      uses: actions/setup-node@master
-      with:
-        node-version: '14.x'
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
 
-    - name: Install npm dependencies
-      run: npm ci
+      - name: Cache dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-npm-production-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-production-
 
-    - name: Upload to Chrome Web Store
-      run: npx webstore upload --extension-id $APP_ID --source dist
-      env:
-        APP_ID: jhmoebgbkkbpdmmigmdmbbdbpolnddod
-        CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
-        CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
-        REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+      - name: Install npm dependencies
+        run: npm ci --production --prefer-offline
 
-    - name: Publish at Chrome Web Store
-      run: npx webstore publish --extension-id $APP_ID
-      env:
-        APP_ID: jhmoebgbkkbpdmmigmdmbbdbpolnddod
-        CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
-        CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
-        REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+      - name: Upload to Chrome Web Store
+        run: npx webstore upload --extension-id $APP_ID --source dist
+        env:
+          APP_ID: jhmoebgbkkbpdmmigmdmbbdbpolnddod
+          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+
+      - name: Publish at Chrome Web Store
+        run: npx webstore publish --extension-id $APP_ID
+        env:
+          APP_ID: jhmoebgbkkbpdmmigmdmbbdbpolnddod
+          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
 
   upload_to_firefox_addons:
     name: Upload (Firefox Add-ons)
@@ -112,25 +142,31 @@ jobs:
     needs: [build_webext]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@master
+      - name: Checkout repository
+        uses: actions/checkout@v2.4.0
 
-    - name: Download build artifacts
-      uses: actions/download-artifact@v2
-      with:
-        name: webext
-        path: dist
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.4.1
+        with:
+          node-version: '16.x'
 
-    - name: Setup Node.js
-      uses: actions/setup-node@master
-      with:
-        node-version: '14.x'
+      - name: Get npm cache directory
+        id: npm-cache
+        run: echo "::set-output name=dir::$(npm config get cache)"
 
-    - name: Install npm dependencies
-      run: npm ci
+      - name: Cache dependencies
+        uses: actions/cache@v2.1.6
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-npm-production-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-production-
 
-    - name: Upload and publish to Firefox Add-ons
-      run: npx web-ext-submit --source-dir dist
-      env:
-        WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
-        WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+      - name: Install npm dependencies
+        run: npm ci --production --prefer-offline
+
+      - name: Upload and publish to Firefox Add-ons
+        run: npx web-ext-submit --source-dir dist
+        env:
+          WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+          WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}

@@ -4,9 +4,9 @@ This simple extension improves your eye experience while you are reading [IETF's
 
 ## Install
 
-* [Chrome Web Store](https://chrome.google.com/webstore/detail/jhmoebgbkkbpdmmigmdmbbdbpolnddod)
-* [Firefox store](https://addons.mozilla.org/en-US/firefox/addon/rfc-reader/)
-* [Opera store](https://addons.opera.com/en/extensions/details/rfc-reader/)
+- [Chrome Web Store](https://chrome.google.com/webstore/detail/jhmoebgbkkbpdmmigmdmbbdbpolnddod)
+- [Firefox store](https://addons.mozilla.org/en-US/firefox/addon/rfc-reader/)
+- [Opera store](https://addons.opera.com/en/extensions/details/rfc-reader/)
 
 Please rate the extension in these stores if you like it ❤️
 
@@ -14,8 +14,8 @@ Please rate the extension in these stores if you like it ❤️
 
 It does few things:
 
-* Enlarges font size from 13px to 20px.
-* Centers content.
+- Enlarges font size from 13px to 20px.
+- Centers content.
 
 How IETF's RFCs look without RFC Reader:
 
