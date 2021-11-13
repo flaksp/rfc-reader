@@ -120,8 +120,14 @@ jobs:
       - name: Install npm dependencies
         run: npm ci --production --prefer-offline
 
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: chromium
+          path: dist
+
       - name: Upload to Chrome Web Store
-        run: npx webstore upload --extension-id $APP_ID --source dist
+        run: npx chrome-webstore-upload upload --extension-id $APP_ID --source dist
         env:
           APP_ID: jhmoebgbkkbpdmmigmdmbbdbpolnddod
           CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
@@ -164,6 +170,12 @@ jobs:
 
       - name: Install npm dependencies
         run: npm ci --production --prefer-offline
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2.0.10
+        with:
+          name: webext
+          path: dist
 
       - name: Upload and publish to Firefox Add-ons
         run: npx web-ext-submit --source-dir dist
