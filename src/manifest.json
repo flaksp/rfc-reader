@@ -6,14 +6,18 @@
 
   "permissions": [
     "http://tools.ietf.org/*",
-    "https://tools.ietf.org/*"
+    "https://tools.ietf.org/*",
+    "http://datatracker.ietf.org/*",
+    "https://datatracker.ietf.org/*"
   ],
 
   "content_scripts": [
     {
       "matches": [
         "http://tools.ietf.org/html/*",
-        "https://tools.ietf.org/html/*"
+        "https://tools.ietf.org/html/*",
+        "http://datatracker.ietf.org/doc/html/*",
+        "https://datatracker.ietf.org/doc/html/*"
       ],
       "js": ["content-script.js"]
     }
