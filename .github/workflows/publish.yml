@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.2.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
@@ -54,7 +54,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.2.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
@@ -98,7 +98,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.2.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
@@ -147,7 +147,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3.2.0
 
       - name: Setup Node.js
         uses: actions/setup-node@v2.4.1
